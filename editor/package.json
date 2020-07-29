@@ -1,36 +1,46 @@
 {
-  "name": "summernote-webpack-example",
-  "version": "2.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "test",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config=webpack.config.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
-  "author": "summernote",
-  "license": "MIT",
   "dependencies": {
-    "@babel/core": "^7.8.7",
-    "bootstrap": "^4.4.1",
-    "codemirror": "^5.52.0",
-    "jquery": "^3.4.1",
+    "bootstrap": "^4.5.0",
+    "core-js": "^3.6.5",
+    "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
-    "summernote": "^0.8.16"
+    "summernote": "^0.8.18",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@types/codemirror": "0.0.97",
-    "autoprefixer": "^9.7.4",
-    "babel-loader": "^8.0.6",
-    "css-loader": "^3.4.2",
-    "file-loader": "^5.1.0",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "postcss-loader": "^3.0.0",
-    "sass": "^1.26.2",
-    "sass-loader": "^8.0.2",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
-  }
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }

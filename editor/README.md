@@ -1,21 +1,24 @@
-# summernote-webpack-example
+# test
 
-Feel free to send a pull request.
-
-## versions
-* @babel/core: ^7.8.7,
-* bootstrap: ^4.4.1,
-* codemirror: "^5.52.0,
-* jquery: ^3.4.1,
-* popper.js: ^1.16.1,
-* summernote: ^0.8.16
-
-## installation
-
+## Project setup
 ```
-# install modules
 npm install
-
-# start webpack dev server
-npm run dev
 ```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
