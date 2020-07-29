@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+							"http://mybatis.org/dtd/mybatis-3-mapper.dtd">         
+<mapper namespace="m_book">
+   <insert id="registBook">
+	   	insert into book (title, writer, writedate, province, city, startdate)
+	   	values(#{title}, #{writer}, now(), #{province}, #{city}, #{startdate})
+   </insert>
+   
+   <select id="getBookList" resultType="book">
+   		select bookno, title, writer, writedate, province, city, startdate
+   		from book
+   		where 1=1
+   		
+      <if test='province != null and !province.equals("")'>
+         and province like #{province}
+      	 <if test='city != null and !city.equals("")'>
+         	and city like #{city}
+      	 </if>	
+      </if>
+      
+      <if test='month != null and !month.equals("")'>
+         and month(startdate) = #{month}
+      </if>
+      	order by writedate  		
+   </select>
+   
+   <select id="getBookListByScore" resultType="book">
+   		select bookno, title, writer, writedate, province, city, startdate
+   		from book
+   		where 1=1
+   		
+      <if test='province != null and !province.equals("")'>
+         	and province like #{province}
+      	 <if test='city != null and !city.equals("")'>
+         	and city like #{city}
+      	 </if>	
+      </if>
+   		order by score desc
+   </select>
+   
+   <delete id="deleteBook">
+   		delete from book
+   		where bookno = #{bookno}
+   </delete>
+   
+   <update id="modifyBook">
+	   	Update book 
+	   	set title = #{title}, writer = #{writer}, writedate=#{writedate}, province=#{province}, city=#{city}, startdate=#{startdate}
+	   	where bookno = #{bookno}
+   </update>
+   
+	<select id="getBookDetail" resultType="book">
+		select bookno, title, writer, writedate, province, city, startdate
+		from book
+		where bookno = #{bookno}
+	</select>
+   
+</mapper>

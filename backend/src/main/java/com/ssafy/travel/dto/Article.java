@@ -11,6 +11,10 @@ public class Article {
 	private String traveldate;
 	private int day;
 	
+	public Article() {
+		super();
+	}
+
 	public Article(int articleno, int bookno, String title, String writedate, double score, String weather, String text,
 			String traveldate, int day) {
 		super();

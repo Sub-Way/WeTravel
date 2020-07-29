@@ -3,10 +3,13 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
    <typeAliases>
+		<typeAlias alias="user" type="com.ssafy.travel.dto.User"/>
        <package name="com.ssafy.travel.dto"/>
     </typeAliases>
 	<mappers>	  
+		<mapper resource="mappers/book-mapper.xml"/>
 		<mapper resource="mappers/article-mapper.xml" />
+		<mapper resource="mappers/user-mapper.xml"/>
 	</mappers>
 </configuration>
 

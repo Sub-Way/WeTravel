@@ -329,10 +329,140 @@ https://cdn.ckeditor.com/
 
 ## [팀원] 강용준
 
+- 사용자들이 쉽게 접근 할 수 있도록 기존의 메인페이지에서 더 간결하게 정보를 전달 (기존 웹사이트들의 형태를 모방)
+- keyframe과 vue-carousel 3d opensource를 활용하여 동적인 애니메이션 효과를 유저에게 전달
+- 목적에 맞는 브랜드 컬러 설정 
 
 ## [팀원] 이규민
+
+![[수정본 모음집] 인기기행문 탑5 (3)](README.assets/[수정본 모음집] 인기기행문 탑5 (3)-1595494574994.jpg)
+
+### 1. 와이어프레임워크 전부 수정
+
+- 전체적인 색감 통일하기 -> 남색
+
+- Top5페이지 누르면 top5만 나오도록수정
+- 검색옵션 모든페이지 `옵션검색`으로 수정!
+- Book 생성, Article 생성 나눠야함
+
+### 2. 지역별 대표 사진 선별
 
 
 ## [팀장] 윤인하
 
+- Gitlab 내 공유 프로젝트로 기능 옮기기
+- 연동 부분에서 CORS 문제 다시 발생 -> proxy 이용하여 연동
+- 내일 AWS로 server 올려서 정상 동작하는지 테스트 예정
+
 ## [팀원] 임진섭
+
+- branch 관리하기
+
+
+
+현재 우리의 branch 구조
+
+             master
+       	   ㅣ
+             develop
+             |    |
+          front    back
+             |        |  => 각자 branch 추가할 부분
+
+##### 0.내 로컬의 브랜치 확인하기
+git branch : 현재 로컬에 있는 브랜치 확인하는 명령어
+
+##### 1.remote의 브랜치 가져오기
+git remote update : 원격 브랜치에 접근하기 위해 갱신하는 명령
+
+##### 2.내 로컬에 없는 branch가 있다면 아래의 명령어로 내 로컬에 브랜치 추가
+
+ex) git checkout -t origin/develop
+     git checkout -t origin/front
+     git checkout -t origin/back
+     ...
+
+##### 3.내 로컬에 모든 branch 추가 되었으면 각자 자신의 포지션으로 이동(백엔드는 back, 프론트는 front)
+ex) git checkout back
+     git checkout front
+
+##### 4.자신의 포지션에서 알맞은 이름의 branch를 생성
+ex) git branch article
+
+##### 5.4번에서 만든 branch에서 add와 commit을 실시
+
+##### 6.상위 branch로 이동하여(front, back) merge를 실시
+ex) git merge --no-ff article
+
+##### 7.그 다음 상위 branch인 develop으로 이동하여 merge 실시
+ex) git merge --no-ff front or back(자신의 포지션)
+
+##### 8.develop branch를 remote에 push 하고 싶다면 명령어 실시
+ex) git push origin develop
+
+![image](https://user-images.githubusercontent.com/22046757/88297804-56212a00-cd3b-11ea-96ef-48ab878bf822.png)
+
+Branch를 바꾸면 해당 branch에서 push한 내용만 확인 가능!!
+디폴트 master일텐데 master로 되어 있으면 develop에서 push한 내용이 보이지 않는 듯!!
+
+##### 9. 가장 상위 branch인 master에 push하고 싶다면 master로 이동 후 merge -> push 실시
+ex) git checkout master
+ex) git merge --no-ff develop
+ex) git push origin master
+
+![image](https://user-images.githubusercontent.com/22046757/88297811-59b4b100-cd3b-11ea-9402-110485796885.png)
+
+Branch를 바꾸면 해당 branch에서 push한 내용만 확인 가능!!
+
+##### 참고사이트
+- https://mylko72.gitbooks.io/git/content/branch/branch_type.html
+- https://blog.outsider.ne.kr/572
+- https://trustyoo86.github.io/git/2017/11/28/git-remote-branch-create.html
+- https://trustyoo86.github.io/git/2017/11/28/git-remote-branch-create.html
+
+# 07/24
+
+## [팀장]윤인하
+##### 1. AWS에 Backend Server 올리고 동작 확인
+- jar 파일로 build하여 내장 tomcat으로 실행, local의 frontend와 REST API 연동 확인
+- SpringBoot는 jsp를 지원하지 않아 webapp 내의 페이지는 404 error 발생, war로 바꾸면 jsp 사용 가능하다고 함
+- 현재는 내장 tomcat을 쓰고 있는데 이를 docker image로 만들어서 docker에서 배포하는 것도 생각 중
+
+
+## [팀원] 박윤정
+- Book에 대한 Spring REST API 설계 및 개발
+- 
+![book-api](https://user-images.githubusercontent.com/28215411/88400503-6d2b4f00-ce03-11ea-9530-8c4c69daca29.PNG)
+
+## [팀원] 임진섭
+
+- 카카오맵 기능 재정의 및 활용도 재구성
+
+![image](https://user-images.githubusercontent.com/22046757/88404989-98b13800-ce09-11ea-9795-4632ff083b48.png)
+
+지역별 여행문 조회를 위한 기능으로
+
+# 07/27
+
+## [팀원] 박윤정
+- Book에 대한 Spring REST API 설계 및 개발
+
+###### 검색방식 변경 => 옵션(대분류, 소분류, 월) [ 가능한 경우 : default+default, 대분류+default, 대분류+소분류 / month(필수x) ]
+###### 역대베스트 기행문 => 평점순으로
+###### Book에 대한 정보 불러올 때 최신순(default) / 평점순 API 추가
+###### 특정 User에 대한 Book정보 => 최신순으로
+
+- User에 대한 Spring REST API 설계 및 개발 시작
+
+
+## [팀장] 윤인하
+- Vue-router, Vuex 공부 및 프론트 내 로그인 정보 저장 구현 중
+- 출처: https://lovemewithoutall.github.io/it/vue-login-demo/
+
+
+
+## [팀원] 강용준
+
+- vue-router, vuex 공부
+- 동적인 화면 구현을 위해 JavaScript 공부
+- 메인페이지 틀 코딩완료 후 다른 페이지 작업 시작
