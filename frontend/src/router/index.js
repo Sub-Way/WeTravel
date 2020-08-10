@@ -23,6 +23,7 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
+import { quillRedefine } from 'vue-quill-editor-upload'
 
 
 // 유저
@@ -53,6 +54,7 @@ Vue.use(IconsPlugin)
 Vue.use(Carousel3d)
 Vue.use(VeeValidate)
 Vue.use(VueQuillEditor)
+Vue.use(quillRedefine)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.component('star-rating', StarRating)

@@ -62,9 +62,6 @@ public class Article {
 	public int getScoreCount() {
 		return score_count;
 	}
-	public void setWeather(int score_count) {
-		this.score_count = score_count;
-	}
 	public String getText() {
 		return text;
 	}
